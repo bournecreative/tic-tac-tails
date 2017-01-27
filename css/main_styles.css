@@ -21,6 +21,8 @@ html,body{
     width: 10vw;
     background-color: #0cf6ff;
     margin: 0.2rem;
+    font-size: 2rem;
+    text-align: center;
 }
 
 .square:after{
