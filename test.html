@@ -4,20 +4,38 @@
 		<meta charset="UTF-8">
 		<title>Title</title>
 		<script>
+				var myarray = [[100,5,5],[200,20,3],[300,7,50]];
 
-				var myarray = [[100,5,10],[200,20,3],[300,7,50]];
-
-				for (var i=0; i<myarray.length; i+=3){
-						for (var j=0; j<myarray[i].length; j++){
-								var total = null;
-								for (var b=i; b<myarray[j].length; b++){
-										console.log(myarray[b][j]);
-										total = myarray[b][j] + total;
-										console.log("Total is " + total);
-
-								}
-						}
+				for (var i=0,j=0; i<myarray.length,j<myarray.length; i++,j++){
+						console.log(myarray[i][j])
 				}
+
+				for (var i=myarray.length-1,j=myarray.length-1; i>=0,j>=0; i--,j--){
+						console.log(myarray[i][j])
+				}
+
+//				for (var i=myarray.length; i>0; i--){
+//						console.log(myarray[i]);
+//						var total = null;
+//						for (var j=0; j<myarray[i].length; j+=3){
+//								total = myarray[i][j] + total;
+//						}
+//				}
+
+
+//				var myarray = [[100,5,10],[200,20,3],[300,7,50]];
+//
+//				for (var i=0; i<myarray.length; i+=3){
+//						for (var j=0; j<myarray[i].length; j++){
+//								var total = null;
+//								for (var b=i; b<myarray[j].length; b++){
+//										console.log(myarray[b][j]);
+//										total = myarray[b][j] + total;
+//										console.log("Total is " + total);
+//
+//								}
+//						}
+//				}
 
 //				for (var b=0; b<myarray[j].length; b+=3){
 //						console.log(myarray[i][j]);

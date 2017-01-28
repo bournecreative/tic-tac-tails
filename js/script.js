@@ -88,7 +88,28 @@ function determineWin() {
     }
   }
   //check for diagonal wins
-
+  //Checks from left to right
+  var leftdiagtotal = null;
+  for (var e=0,f=0; e<gameBoard.length,f<gameBoard.length; e++,f++){
+    leftdiagtotal = gameBoard[e][f] + leftdiagtotal;
+  }
+  if (leftdiagtotal === 300) {
+    console.log("player one has won!!")
+  } else if (leftdiagtotal === 6) {
+    console.log("player two has won!!")
+  }
+  
+  //Checks from right to left
+  var rightdiagtotal = null;
+  for (var k=0,l=gameBoard.length-1; k<gameBoard.length,l>=0; k++,l--){
+    rightdiagtotal = gameBoard[k][l] + rightdiagtotal;
+    console.log(gameBoard[k][l]);
+  }
+  if (rightdiagtotal === 300) {
+    console.log("player one has won!!")
+  } else if (rightdiagtotal === 6) {
+    console.log("player two has won!!")
+  }
 }
 
 $(document).ready(function(){
