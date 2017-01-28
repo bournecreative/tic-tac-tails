@@ -11,14 +11,17 @@ html,body{
 }
 
 .game_board{
-    width: 35vw;
-    height: 100%;
+    width: 40vw;
     margin: 5% auto;
+}
+
+.row{
+    text-align: center;
 }
 
 .square{
     display: inline-block;
-    width: 10vw;
+    width: 10%;
     background-color: #0cf6ff;
     margin: 0.2rem;
     font-size: 2rem;
