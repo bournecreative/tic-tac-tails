@@ -112,6 +112,7 @@ function determineWin() {
   }
 }
 
+//Resets Game
 $(document).ready(function(){
   buildGameBoard();
   selectBoardSquare();

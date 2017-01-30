@@ -1,28 +1,152 @@
-html,body{
+html{
+    background: url("../imgs/stars.jpg") no-repeat;
+    background-size: cover;
+    background-position: bottom;
     width: 100%;
     height: 100%;
     margin: 0;
+}
+
+body{
+    width: 100%;
+    margin: 0;
     font-size: 16px;
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+}
+
+header{
+    margin: 0;
+    padding: 0.5% 0;
+    background: rgba(0,57,94,0.8);
+}
+
+h1{
+    margin: 0 auto ;
+    text-align: center;
+    font-size: 3rem;
 }
 
 .wrapper{
     width: 100%;
     height: 100%;
+    text-align: center;
 }
+
+.gameMessages{
+    width: 100%;
+    height: 15vh;
+}
+
+.gameMessages p{
+    margin: 0.5rem;
+}
+
+/**********************
+* Player One Section
+**********************/
+.player_one_section{
+    display: inline-block;
+    width: 20%;
+    height: 15vh;
+    vertical-align: top;
+    text-align: left;
+}
+
+.player_one_img{
+    width: 100%;
+    height: 100%;
+    background: url("../imgs/astronaut-cat.png")no-repeat;
+    background-size: contain;
+    background-position: bottom left;
+}
+
+.player_one_section h2{
+    background-color: #00395e;
+    padding: 5%;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.player_one_section img{
+    display: inline-block;
+    padding: 5%;
+    width: 30%;
+    vertical-align: top;
+}
+
+.player_one_section ul{
+    display: inline-block;
+    padding: 0;
+}
+
+.player_one_section li{
+    list-style-type: none;
+    padding: 1% 0;
+}
+
+/**********************
+* Player Two Section
+**********************/
+
+.player_two_section{
+    display: inline-block;
+    width: 20%;
+    height: 15vh;
+    vertical-align: top;
+    text-align: right;
+}
+
+.player_two_img{
+    width: 100%;
+    height: 100%;
+    background: url("../imgs/cosmonaute-cat.png")no-repeat;
+    background-size: contain;
+    background-position: bottom right;
+}
+
+.player_two_section h2{
+    background-color: #d95425;
+    padding: 5%;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.player_two_section img{
+    display: inline-block;
+    padding: 5%;
+    width: 30%;
+    vertical-align: top;
+}
+
+.player_two_section ul{
+    display: inline-block;
+    padding: 0;
+}
+
+.player_two_section li{
+    list-style-type: none;
+    padding: 1% 0;
+}
+
+/**********************
+* Game Board Section
+**********************/
 
 .game_board{
-    width: 40vw;
-    margin: 5% auto;
-}
-
-.row{
+    display: inline-block;
     text-align: center;
+    width: 30%;
+    margin: 0 auto;
 }
 
 .square{
     display: inline-block;
-    width: 10%;
-    background-color: #0cf6ff;
+    width: 20%;
+    background: url("../imgs/space-cat-logo.png") no-repeat;
+    background-size: 50%;
+    background-position: center;
+    background-color: rgba(255,255,255,0.8);
     margin: 0.2rem;
     font-size: 2rem;
     text-align: center;
@@ -32,4 +156,32 @@ html,body{
     content: '';
     display: block;
     padding-bottom: 100%;
+}
+
+.square:hover{
+    background-color: rgba(0,57,94,0.8);
+}
+
+/**********************
+* Game Reset
+**********************/
+
+.gameReset{
+    width: 12vw;
+    text-align: center;
+    padding: 1% 0.5%;
+    margin: 0 auto;
+    background-color: #00395e;
+    border: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3vw;
+    font-weight: 600;
+    color: #ffffff;
+    -webkit-transition: 0.5s; /* for Safari */
+    transition: 0.2s;
+}
+
+.gameReset:hover{
+    background-color: #29abe2;
+    color: #00395e;
 }

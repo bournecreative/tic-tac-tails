@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link rel="stylesheet" type="text/css" href="css/main_styles.css"/>
+		<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 		<script
 		src="https://code.jquery.com/jquery-2.2.4.min.js"
 		integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
@@ -12,8 +13,39 @@
 		<script src="js/script.js"></script>
 </head>
 <body>
-<div class="wrapper">
-		<div class="game_board"></div>
+		<div class="wrapper">
+				<header>
+						<h1>TIC - TAC - TAILS</h1>
+				</header>
+				<!-- Game Messages -->
+				<section class="gameMessages">
+						<p>A Space Cat Adventure</p>
+				</section>
+				<!-- Player One Section  -->
+				<section class="player_one_section">
+						<div class="player_one_img"></div>
+						<h2>Player 1 - X's</h2>
+						<img src="imgs/astronaut-badge.png"/>
+						<ul>
+								<li>Astronaut Cat</li>
+								<li>Wins:</li>
+						</ul>
+				</section>
+				<!-- Game Board  -->
+				<div class="game_board"></div>
+				<!-- Player Two Section  -->
+				<section class="player_two_section">
+						<div class="player_two_img"></div>
+						<h2>Player 1 - X's</h2>
+						<ul>
+								<li>Cosmonaute Cat</li>
+								<li>Wins:</li>
+						</ul>
+						<img src="imgs/cosmonaute-badge.png"/>
+				</section>
+		<section class="game-tools">
+				<button type="button" class="gameReset">GAME RESET</button>
+		</section>
 </div>
 </body>
 </html>
