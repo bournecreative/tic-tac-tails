@@ -15,7 +15,7 @@
 						<h1>TIC - TAC - TAILS</h1>
 				</header>
 				<!-- Game Messages -->
-				<section class="gameMessages">
+				<section class="subtitle">
 						<p>A Space Cat Adventure</p>
 				</section>
 				<!-- Player One Section  -->
@@ -25,18 +25,29 @@
 						<img src="imgs/astronaut-badge.png"/>
 						<ul>
 								<li>Astronaut Cat</li>
-								<li>Wins:</li>
+								<li>Wins: <span class="astro_wins"></span></li>
 						</ul>
 				</section>
 				<!-- Game Board  -->
-				<div class="game_board"></div>
+				<div class="game_board">
+						<div class="game_shield">
+								<button type="button" class="start">START</button>
+						</div>
+						<div class="victory_shield">
+								<div class="winMessageContainer">
+										<h2>VICTORY!! </h2>
+										<p class="winMessage"></p>
+								</div>
+					</div>
+				</div>
+
 				<!-- Player Two Section  -->
 				<section class="player_two_section">
 						<div class="player_two_img"></div>
-						<h2>Player 1 - X's</h2>
+						<h2>Player 2 - O's</h2>
 						<ul>
-								<li>Cosmonaute Cat</li>
-								<li>Wins:</li>
+								<li>Cosmonaut Cat</li>
+								<li><span class="cosm_wins"></span> :Wins</li>
 						</ul>
 						<img src="imgs/cosmonaute-badge.png"/>
 				</section>

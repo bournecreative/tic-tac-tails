@@ -6,6 +6,9 @@ var player2 = false;
 var gameBoardSize = 3;
 var player1_moves = null;
 var player2_moves = null;
+var player_one_wins = 0;
+var player_two_wins = 0;
+
 
 //On page load, build game board
 function buildGameBoard(){
@@ -35,7 +38,7 @@ function markBoardSquare(){
     if (player1){
       gameBoard[row][col] = 100;
       $(this).off('click');
-      $(this).css("background-color", "blue");
+      $(this).addClass("cat_paw_x");
       player1_moves += 1;
       winCheck();
       player1 = false;
@@ -43,7 +46,7 @@ function markBoardSquare(){
     }else{
       gameBoard[row][col] = 2;
       $(this).off('click');
-      $(this).css("background-color", "red");
+      $(this).addClass("cat_paw_o");
       player2_moves += 1;
       winCheck();
       player1 = true;
@@ -67,9 +70,9 @@ function determineWin() {
       rowtotal = gameBoard[i][j] + rowtotal;
     }
     if (rowtotal === 300) {
-      console.log("player one has won!!")
+      winMessage("catX");
     } else if (rowtotal === 6) {
-      console.log("player two has won!!")
+      winMessage("catO");
     }
   }
   //check for column wins
@@ -80,9 +83,9 @@ function determineWin() {
         coltotal = gameBoard[c][b] + coltotal;
         
         if (coltotal === 300) {
-          console.log("player one has won!!")
+          winMessage("catX");
         } else if (coltotal === 6) {
-          console.log("player two has won!!")
+          winMessage("catO");
         }
       }
     }
@@ -94,9 +97,9 @@ function determineWin() {
     leftdiagtotal = gameBoard[e][f] + leftdiagtotal;
   }
   if (leftdiagtotal === 300) {
-    console.log("player one has won!!")
+    winMessage("catX");
   } else if (leftdiagtotal === 6) {
-    console.log("player two has won!!")
+    winMessage("catO");
   }
   
   //Checks from right to left
@@ -106,15 +109,112 @@ function determineWin() {
     console.log(gameBoard[k][l]);
   }
   if (rightdiagtotal === 300) {
-    console.log("player one has won!!")
+    winMessage("catX");
+    
   } else if (rightdiagtotal === 6) {
-    console.log("player two has won!!")
+    winMessage("catO");
   }
 }
 
-//Resets Game
+/***************************
+ *  Show Points
+ ****************************/
+function showPoints(){
+  $('.astro_wins').text(player_one_wins);
+  $('.cosm_wins').text(player_two_wins);
+}
+
+/***************************
+ *  Increment Points
+ ****************************/
+function incrementPoints(cat){
+  if (cat === "catX"){
+    player_one_wins +=1;
+    showPoints();
+  }else if(cat === "catO"){
+    player_two_wins +=1;
+    showPoints();
+  }
+}
+
+/***************************
+ *  Game Messages
+ ****************************/
+function winMessage(cat){
+  victoryScreenIn();
+  
+  if (cat === 'catX'){
+    $('.winMessage').text("For GREATNESS!! Astronaut Cat Wins!!");
+    incrementPoints("catX");
+  }else if(cat === 'catO'){
+    $('.winMessage').text("Congratulations Comrade!! Cosmonaut Cat Wins");
+    incrementPoints("catO");
+  }
+}
+
+function victoryScreenIn(){
+  $('.victory_shield').fadeIn();
+}
+
+function victoryScreenOut(){
+  $('.winMessage').text("");
+  $('.victory_shield').fadeOut();
+}
+
+/***************************
+ *  Clear Game Board
+ ****************************/
+function clearGameBoard(){
+  $('.square').removeClass("cat_paw_x cat_paw_o");
+  victoryScreenOut();
+  resetInitialGameValues();
+  setGameArrayCells();
+  selectBoardSquare();
+}
+
+function setGameArrayCells(){
+  for (var i=0; i<gameBoard.length; i++){
+    for (var j=0; j<gameBoard[i].length; j++){
+      gameBoard[i][j] = null;
+    }
+  }
+}
+
+function resetInitialGameValues(){
+  player_one = true;
+  player_two = false;
+  player1 = true;
+  player2 = false;
+  player1_moves = null;
+  player2_moves = null;
+}
+
+/***************************
+*  Setting the Game Board
+****************************/
+
+function resetGameHandler() {
+  $('.gameReset').click(resetGame);
+}
+
+function resetGame() {
+  clearGameBoard();
+  $('.game_shield').fadeIn(700);
+}
+
+function startGameHandler() {
+  $('.start').click(startGame);
+}
+
+function startGame(){
+  $('.game_shield').fadeOut(700);
+}
+
 $(document).ready(function(){
   buildGameBoard();
+  showPoints();
   selectBoardSquare();
+  startGameHandler();
+  resetGameHandler();
 });
 
