@@ -3,12 +3,15 @@ var player_two = false;
 var gameBoard = null;
 var player1 = true;
 var player2 = false;
-var gameBoardSize = 3;
 var player1_moves = null;
 var player2_moves = null;
+var gameBoardSize = 3;
 var player_one_wins = 0;
 var player_two_wins = 0;
 
+/***************************
+ *  Build Game Board
+****************************/
 
 //On page load, build game board
 function buildGameBoard(){
@@ -24,6 +27,10 @@ function buildGameBoard(){
     }
   }
 }
+
+/***************************
+ *  Mark board upon click
+****************************/
 
 //Mark board when user clicks
 function selectBoardSquare(){
@@ -55,11 +62,19 @@ function markBoardSquare(){
   }
 }
 
+/***************************
+ *  Check for Win when appropriate
+****************************/
+
 function winCheck(){
   if (player1_moves >= gameBoardSize || player2_moves >= gameBoardSize){
     determineWin();
   }
 }
+
+/***************************
+ *  Determine Win
+****************************/
 
 function determineWin() {
   //check game board rows
@@ -106,7 +121,7 @@ function determineWin() {
   var rightdiagtotal = null;
   for (var k=0,l=gameBoard.length-1; k<gameBoard.length,l>=0; k++,l--){
     rightdiagtotal = gameBoard[k][l] + rightdiagtotal;
-    console.log(gameBoard[k][l]);
+    // console.log(gameBoard[k][l]);
   }
   if (rightdiagtotal === 300) {
     winMessage("catX");
@@ -114,11 +129,20 @@ function determineWin() {
   } else if (rightdiagtotal === 6) {
     winMessage("catO");
   }
+  
+  if ((player1_moves >= 5) &&
+      (rowtotal !== 300 || rowtotal !== 6) &&
+      (coltotal !== 300 || coltotal !== 6) &&
+      (leftdiagtotal !== 300 || leftdiagtotal !== 6) &&
+      (rightdiagtotal !== 300 || rightdiagtotal !== 6)
+     ){
+    winMessage("catsGame");
+  }
 }
 
 /***************************
  *  Show Points
- ****************************/
+****************************/
 function showPoints(){
   $('.astro_wins').text(player_one_wins);
   $('.cosm_wins').text(player_two_wins);
@@ -126,7 +150,7 @@ function showPoints(){
 
 /***************************
  *  Increment Points
- ****************************/
+****************************/
 function incrementPoints(cat){
   if (cat === "catX"){
     player_one_wins +=1;
@@ -139,18 +163,27 @@ function incrementPoints(cat){
 
 /***************************
  *  Game Messages
- ****************************/
+****************************/
 function winMessage(cat){
   victoryScreenIn();
   
   if (cat === 'catX'){
+    $('.winMessageContainer h2').text("VICTORY!");
     $('.winMessage').text("For GREATNESS!! Astronaut Cat Wins!!");
     incrementPoints("catX");
   }else if(cat === 'catO'){
+    $('.winMessageContainer h2').text("VICTORY!");
     $('.winMessage').text("Congratulations Comrade!! Cosmonaut Cat Wins");
     incrementPoints("catO");
+  }else if(cat === "catsGame"){
+    $('.winMessageContainer h2').text("CATS GAME");
+    $('.winMessage').text("No Winners this Round.");
   }
 }
+
+/***************************
+ *  Victory Screen
+****************************/
 
 function victoryScreenIn(){
   $('.victory_shield').fadeIn();
@@ -163,7 +196,7 @@ function victoryScreenOut(){
 
 /***************************
  *  Clear Game Board
- ****************************/
+****************************/
 function clearGameBoard(){
   $('.square').removeClass("cat_paw_x cat_paw_o");
   victoryScreenOut();
@@ -172,6 +205,7 @@ function clearGameBoard(){
   selectBoardSquare();
 }
 
+//Loops through array and sets all cells to null
 function setGameArrayCells(){
   for (var i=0; i<gameBoard.length; i++){
     for (var j=0; j<gameBoard[i].length; j++){
@@ -180,6 +214,7 @@ function setGameArrayCells(){
   }
 }
 
+//resets all global values back to initial values
 function resetInitialGameValues(){
   player_one = true;
   player_two = false;
@@ -190,7 +225,7 @@ function resetInitialGameValues(){
 }
 
 /***************************
-*  Setting the Game Board
+*  Reset the Game Board
 ****************************/
 
 function resetGameHandler() {
@@ -201,6 +236,10 @@ function resetGame() {
   clearGameBoard();
   $('.game_shield').fadeIn(700);
 }
+
+/***************************
+ *  Start Game
+****************************/
 
 function startGameHandler() {
   $('.start').click(startGame);
